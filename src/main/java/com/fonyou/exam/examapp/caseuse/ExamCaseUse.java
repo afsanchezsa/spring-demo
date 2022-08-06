@@ -24,7 +24,10 @@ public class ExamCaseUse {
     private AssignmentService assignmentService;
     private AnswerService answerService;
 
+    @Transactional
     public Exam register(RegisterExamDTO registerExamDTO){
+        if(!this.examService.isRigthExam(registerExamDTO))
+            return null;
         Exam newExam=new Exam();
         List<Question> questionList=  registerExamDTO.getQuestions().stream().map(
                 questionDTO -> {
@@ -55,7 +58,7 @@ public class ExamCaseUse {
             }
         });
     }
-
+@Transactional
     public QualificationDTO qualifyExam(Long assigmentId){
         Assignment assignment=this.assignmentService.getById(assigmentId);
         if(assignment==null)
