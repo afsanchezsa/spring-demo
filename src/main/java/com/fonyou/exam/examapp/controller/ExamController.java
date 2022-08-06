@@ -1,6 +1,7 @@
 package com.fonyou.exam.examapp.controller;
 
 import com.fonyou.exam.examapp.DTO.AssignExamDTO;
+import com.fonyou.exam.examapp.DTO.FillExamDTO;
 import com.fonyou.exam.examapp.DTO.RegisterExamDTO;
 import com.fonyou.exam.examapp.caseuse.AssignmentCaseUse;
 import com.fonyou.exam.examapp.caseuse.ExamCaseUse;
@@ -34,6 +35,12 @@ public class ExamController {
             if(assignment==null)
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             return new ResponseEntity<>(assignment,HttpStatus.CREATED);
+        }
+
+        @PostMapping("exam/fill")
+        public ResponseEntity<Void> fillExam(@RequestBody FillExamDTO fillExamDTO){
+            this.examCaseUse.fillExam(fillExamDTO);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
 
 }
