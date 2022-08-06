@@ -27,7 +27,7 @@ public class ExamCaseUse {
         newExam.setDate(registerExamDTO.getDate());
         Exam registeredExam=this.examService.save(newExam);
 
-
-        return registeredExam;
+        registeredExam.getQuestions().forEach(question -> {question.setExam(registeredExam);});
+        return this.examService.save(registeredExam);
     }
 }
