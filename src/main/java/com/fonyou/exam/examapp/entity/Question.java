@@ -19,6 +19,7 @@ public class Question {
     private Float score;
     @ManyToOne
     @JoinColumn(name = "id_exam")
+    @JsonIgnore
     private Exam exam;
 
     @OneToMany(mappedBy = "question",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
