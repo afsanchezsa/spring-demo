@@ -2,6 +2,7 @@ package com.fonyou.exam.examapp.controller;
 
 import com.fonyou.exam.examapp.DTO.AssignExamDTO;
 import com.fonyou.exam.examapp.DTO.FillExamDTO;
+import com.fonyou.exam.examapp.DTO.QualificationDTO;
 import com.fonyou.exam.examapp.DTO.RegisterExamDTO;
 import com.fonyou.exam.examapp.caseuse.AssignmentCaseUse;
 import com.fonyou.exam.examapp.caseuse.ExamCaseUse;
@@ -10,10 +11,7 @@ import com.fonyou.exam.examapp.entity.Exam;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -41,6 +39,11 @@ public class ExamController {
         public ResponseEntity<Void> fillExam(@RequestBody FillExamDTO fillExamDTO){
             this.examCaseUse.fillExam(fillExamDTO);
             return new ResponseEntity<>(HttpStatus.OK);
+        }
+        @GetMapping("/exam/qualify/{assignmentId}")
+        public ResponseEntity<QualificationDTO>qualifyExam(@PathVariable Long assignmentId){
+            QualificationDTO response=this.examCaseUse.qualifyExam(assignmentId);
+            return new ResponseEntity<>(response,HttpStatus.OK);
         }
 
 }

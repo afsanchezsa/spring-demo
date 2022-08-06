@@ -1,6 +1,7 @@
 package com.fonyou.exam.examapp.caseuse;
 
 import com.fonyou.exam.examapp.DTO.FillExamDTO;
+import com.fonyou.exam.examapp.DTO.QualificationDTO;
 import com.fonyou.exam.examapp.DTO.QuestionResponseDTO;
 import com.fonyou.exam.examapp.DTO.RegisterExamDTO;
 import com.fonyou.exam.examapp.entity.*;
@@ -54,5 +55,22 @@ public class ExamCaseUse {
             }
         });
     }
+
+    public QualificationDTO qualifyExam(Long assigmentId){
+        Assignment assignment=this.assignmentService.getById(assigmentId);
+        if(assignment==null)
+            return null;
+        Double totalScore=assignment.getAnswers().stream().mapToDouble(answer -> {
+            Question question=answer.getQuestion();
+            Option option=answer.getOption();
+            if(question==option.getQuestion() && option.getCorrect())
+                return question.getScore();
+            return 0f;
+        }).sum();
+        QualificationDTO qualificationDTO=new QualificationDTO();
+        qualificationDTO.setTotalScore(totalScore);
+        return qualificationDTO;
+    }
+
 
 }
