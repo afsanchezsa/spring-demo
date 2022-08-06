@@ -17,7 +17,9 @@ public class Exam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_exam")
     private Long id;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss",timezone = "UTC")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+   // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-05:00")
+  // @JsonFormat(timezone = "GMT-05:00")
     private Date date;
     @OneToMany(mappedBy = "exam",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Question> questions;

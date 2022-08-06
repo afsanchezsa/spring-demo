@@ -16,8 +16,8 @@ public class Student {
     @Column(name="id_student")
     private Long id;
     private String name;
-    private Integer edad;
-    private String ciudad;
+    private Integer age;
+    private String city;
     private String timeZone;
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JsonIgnore

@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class ExamService {
+
+
     private ExamRepository examRepository;
 
     public Exam save(Exam exam){
         return this.examRepository.save(exam);
     }
 
-
+    public Exam getById(Long id){
+        return this.examRepository.findById(id).orElse(null);
+    }
 
 }
