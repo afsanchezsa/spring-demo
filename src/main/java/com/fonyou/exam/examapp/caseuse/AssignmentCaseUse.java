@@ -11,13 +11,15 @@ import com.fonyou.exam.examapp.utils.DateUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
+
 @Component
 @AllArgsConstructor
 public class AssignmentCaseUse {
     private AssignmentService assignmentService;
     private ExamService examService;
     private StudentService studentService;
-
+    @Transactional
     public Assignment register(AssignExamDTO assignExamDTO){
 
         Assignment newAssignment=new Assignment();

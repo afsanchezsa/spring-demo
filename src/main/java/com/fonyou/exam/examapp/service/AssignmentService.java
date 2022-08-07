@@ -14,4 +14,8 @@ public class AssignmentService {
         return this.assignmentRepository.save(assignment);
     }
 
+    public Assignment getById(Long id){
+        return this.assignmentRepository.findById(id).orElse(null);
+    }
+
 }
