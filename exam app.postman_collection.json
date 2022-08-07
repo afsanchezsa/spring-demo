@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "5532fbdc-6413-4ca8-a193-47ec3de97f0d",
+		"name": "exam app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17164661"
+	},
+	"item": [
+		{
+			"name": "register exam",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\":\"2022-10-10 20:20:15\",\r\n    \"questions\":[\r\n        {\"statement\":\"pregunta #1\",\"score\":25.0,\"options\":[{\"statement\":\"primera opcion\",\"correct\":true},{\"statement\":\"segunda opcion\",\"correct\":false},{\"statement\":\"tercera opcion\",\"correct\":false},{\"statement\":\"cuarta opcion\",\"correct\":false}]},\r\n\r\n{\"statement\":\"pregunta #2\",\"score\":25.0,\"options\":[{\"statement\":\"primera opcion\",\"correct\":true},{\"statement\":\"segunda opcion\",\"correct\":false},{\"statement\":\"tercera opcion\",\"correct\":false},{\"statement\":\"cuarta opcion\",\"correct\":false}]},\r\n{\"statement\":\"pregunta #3\",\"score\":25.0,\"options\":[{\"statement\":\"primera opcion\",\"correct\":true},{\"statement\":\"segunda opcion\",\"correct\":false},{\"statement\":\"tercera opcion\",\"correct\":false},{\"statement\":\"cuarta opcion\",\"correct\":false}]},\r\n{\"statement\":\"pregunta #4\",\"score\":25.0,\"options\":[{\"statement\":\"primera opcion\",\"correct\":true},{\"statement\":\"segunda opcion\",\"correct\":false},{\"statement\":\"tercera opcion\",\"correct\":false},{\"statement\":\"cuarta opcion\",\"correct\":false}]}\r\n\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/exam",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exam"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Andres\",\r\n    \"age\":22,\r\n    \"city\":\"Hong Kong\",\r\n    \"timezone\":\"Asia/Hong_Kong\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/student",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ASSIGN EXAM TO A STUDENT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"examId\":1,\r\n    \"studentId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/exam/assign",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exam",
+						"assign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "response exam",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"assignmentId\":1,\r\n    \"responses\":[\r\n        {\"questionId\":1,\"optionId\":1},\r\n        {\"questionId\":2,\"optionId\":6},\r\n        {\"questionId\":3,\"optionId\":11},\r\n        {\"questionId\":4,\"optionId\":13}\r\n\r\n\r\n\r\n    ]\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/exam/fill",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exam",
+						"fill"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "qualify exam",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/exam/qualify/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"exam",
+						"qualify",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

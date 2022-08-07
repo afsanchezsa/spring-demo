@@ -1,0 +1,19 @@
+version: '3'
+services:
+  exam_db:
+    image: 'postgres:11'
+    expose:
+      - 5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: somePassword
+      POSTGRES_DB: examdb
+  exam_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - exam_db
